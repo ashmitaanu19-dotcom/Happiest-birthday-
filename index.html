@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Someone Special ✨</title>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fef6f6 0%, #f3e7ff 100%);
+            --accent-pink: #ff85a2;
+            --accent-purple: #b388ff;
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --text-main: #4a3e4d;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .sparkle {
+            position: absolute;
+            pointer-events: none;
+            animation: floatUp 5s linear infinite;
+            font-size: 1.2rem;
+            opacity: 0.6;
+        }
+        .app-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            width: 90%;
+            max-width: 480px;
+            min-height: 620px;
+            padding: 2.5rem 1.5rem;
+            box-shadow: 0 20px 50px rgba(179, 136, 255, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 10;
+        }
+        .page {
+            display: none;
+            animation: fadeIn 0.6s ease-in-out forwards;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+        .page.active { display: flex; }
+        
+        h1 {
+            font-size: 2.2rem;
+            background: linear-gradient(45deg, var(--accent-pink), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        p { line-height: 1.6; margin-bottom: 1.5rem; font-size: 1.05rem; }
+        
+        .btn {
+            background: linear-gradient(90deg, var(--accent-pink), var(--accent-purple));
+            color: white;
+            border: none;
+            padding: 0.9rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 15px rgba(255, 133, 162, 0.2);
+            margin: 0.5rem 0;
+            width: 85%;
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px rgba(255, 133, 162, 0.35);
+        }
+
+        /* Bubble Wrap Styling */
+        .bubble-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            width: 100%;
+        }
+        .bubble {
+            background: rgba(255, 255, 255, 0.6);
+            border: 2px solid var(--accent-pink);
+            border-radius: 50%;
+            height: 80px;
+            width: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: inset 0 4px 6px rgba(255,255,255,0.6), 0 4px 10px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+            margin: 0 auto;
+        }
+        .bubble.popped {
+            background: rgba(255, 133, 162, 0.2);
+            border-color: var(--accent-purple);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+            transform: scale(0.9);
+        }
+        .bubble-hint {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: -0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Diary Styling */
+        .diary-area {
+            width: 100%;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1rem;
+            font-size: 1rem;
+            resize: none;
+            outline: none;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        .pass-input {
+            width: 80%;
+            padding: 0.7rem 1rem;
+            border-radius: 25px;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 1rem;
+            text-align: center;
+            outline: none;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <!-- PAGE 1: THE WISH -->
+        <div id="page1" class="page active">
+            <h1>Happy Birthday! 🌸</h1>
+            <p>aaj sab tere naam....yeh website bas tere daily ki tension thodi si kam krne k liye h.</p>
+            <button class="btn" onclick="nextPage(2)">Step Inside ✨</button>
+        </div>
+
+        <!-- PAGE 2: THE HUB -->
+        <div id="page2" class="page">
+            <h1>Your Options 💖</h1>
+            <p>Pick a door to explore your gifts:</p>
+            <button class="btn" onclick="window.open('YOUR_VIDEO_URL_HERE', '_blank')">🎬 Open Birthday Video</button>
+            <button class="btn" onclick="window.open('YOUR_PHOTOS_URL_HERE', '_blank')">📸 View Photo Gallery</button>
+            <button class="btn" onclick="nextPage(3)">🎵 The Song About You</button>
+        </div>
+
+        <!-- PAGE 3: THE SONG -->
+        <div id="page3" class="page">
+            <h1>A Song for You 🎶</h1>
+            <p>This melody always reminds me of your laughter and vibe.</p>
+            <div style="width:100%; margin-bottom: 1.5rem;">
+                <iframe style="border-radius:12px" src="https://spotify.com" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <button class="btn" onclick="nextPage(4)">Read My Letter ✍️</button>
+        </div>
+
+        <!-- PAGE 4: THE LETTER -->
+        <div id="page4" class="page">
+            <h1>My Letter to You ✉️</h1>
+            
+            <p id="letterBox" style="text-align: left; font-size: 0.95rem; max-height: 250px; overflow-y: auto; background: rgba(255,255,255,0.3); padding: 1rem; border-radius: 15px; margin-top:0.5rem; line-height: 1.6;">
+                Dear [bandariya🐵],<br><br>
+                Happy happy birthday,khair tere liye krti toh nhi but kr rhi hu...umid h tu ese hi khush rhegi khush rhiyo bhiand hmesha girti parti mt rhiyo.<br><br>
+                meri jindgi me aane k liye shukriya 🙏🏻🙏🏻 tu aaj ke din dharti par aai thi.and tu shyd pta nhi ky ky soch leti hogi but in real tu bht important h and jo nhi smjhta woh chutiya.<br><br>
+                tu mere paas h yh mere liye bht khaas baat h. thnku. tu khush reha kr. baaki mujhse ummid mt rkh mujhe likhne nhi aata jada<br><br>
+              With love,<br>[chudail😝]
+            </p>
+            <button class="btn" onclick="nextPage(5)">Pop Some Bubbles! 🎈</button>
+        </div>
+
+        <!-- PAGE 5: VIRTUAL BUBBLE WRAP -->
+        <div id="page5" class="page">
+            <h1>Pop For Surprises! 🫧</h1>
+            <p class="bubble-hint">Click the bubbles to pop them and find secret messages!</p>
+            
+            <div class="bubble-grid">
+                <div class="bubble" onclick="popBubble(this, 'You are so beautiful! teri ankhe aayeee haaayeee🌸')">🎈</div>
+                <div class="bubble" onclick="popBubble(this, 'Always proud of you!tu ese hi girti reh ek din bdhiya pitegi ✨')">🎈</div>
+                <div class="bubble" onclick="popBubble(this, 'You make me smile! and always mera khyal rkhti h🥰')">🎈</div>
+                <div class="bubble" onclick="popBubble(this, 'Best bandariya ever! 👑')">🎈</div>
+                <div class="bubble" onclick="popBubble(this, 'Keep shining bright! itni bright chamak ki suraj bhi jal Jaye ⭐️')">🎈</div>
+                <div class="bubble" onclick="popBubble(this, 'I love your laugh,when its bcuz of me! 💕')">🎈</div>
+            </div>
+            
+            <p id="bubbleMessage" style="font-weight: 600; min-height: 24px; color: var(--accent-pink);"></p>
+            <button class="btn" onclick="nextPage(6)">Go to Your Diary 🔒</button>
+        </div>
+
+        <!-- PAGE 6: THE LOCKABLE DIARY -->
+        <div id="page6" class="page">
+            <h1>Your Secret Diary 🔑</h1>
+            <div id="diaryAuth">
+                <p>Set a password to create your diary, or enter it to unlock your thoughts.</p>
+                <input type="password" id="diaryPassword" class="pass-input" placeholder="Enter password...">
+                <button class="btn" onclick="unlockDiary()">Unlock / Set Password</button>
+            </div>
+            <div id="diaryContent" style="display: none; width: 100%;">
+                <textarea id="diaryText" class="diary-area" placeholder="Write your secret thoughts here..."></textarea>
+                <button class="btn" onclick="saveDiary()">Save & Lock Diary 💾</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://jsdelivr.net"></script>
+    <script>
+        function nextPage(pageNumber) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(`page${pageNumber}`).classList.add('active');
+      
